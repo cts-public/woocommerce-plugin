@@ -1,0 +1,60 @@
+{
+    "packages": [
+        {
+            "name": "ctsolutionsk/crypay-php",
+            "version": "v1.0.0",
+            "version_normalized": "1.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ctsolutionsk/crypay-php.git",
+                "reference": "740deaa2c8e841c15e829aa1bbe3110f530620bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ctsolutionsk/crypay-php/zipball/740deaa2c8e841c15e829aa1bbe3110f530620bc",
+                "reference": "740deaa2c8e841c15e829aa1bbe3110f530620bc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "~1.4.10",
+                "phpunit/phpunit": "^5.7 || ^9.0",
+                "squizlabs/php_codesniffer": "~3.6.2"
+            },
+            "time": "2023-06-29T13:58:20+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "CryPay\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CryPay library for PHP",
+            "homepage": "https://crypay.com",
+            "keywords": [
+                "altcoin",
+                "bitcoin",
+                "crypay",
+                "gateway",
+                "litecoin",
+                "merchant",
+                "payment"
+            ],
+            "support": {
+                "issues": "https://github.com/ctsolutionsk/crypay-php/issues",
+                "source": "https://github.com/ctsolutionsk/crypay-php/tree/v1.0.0"
+            },
+            "install-path": "../ctsolutionsk/crypay-php"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}
