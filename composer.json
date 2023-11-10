@@ -1,5 +1,5 @@
 {
-    "name": "ctsolutionsk/woocommerce-plugin",
+    "name": "cts-public/woocommerce-plugin",
     "type": "library",
     "description": "Accept Bitcoin and Altcoins via CryPay in your WooCommerce store",
     "keywords": [
@@ -12,7 +12,7 @@
         "payment",
         "purchase"
     ],
-    "homepage": "https://github.com/ctsolutionsk/woocommerce-plugin",
+    "homepage": "https://github.com/cts-public/woocommerce-plugin",
     "license": "MIT",
     "scripts": {
         "phpcs": "phpcs",
@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "ctsolutionsk/crypay-php": "^1.0"
+        "cts-public/crypay-php": "^1.0"
     },
     "require-dev": {
         "10up/wp_mock": "dev-trunk",
