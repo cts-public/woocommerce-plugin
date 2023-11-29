@@ -189,9 +189,9 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
             'amount' => (float)$order->get_total(),
             'symbol' => $order->get_currency(),
             'currency' => $order->get_currency(),
-            //'callback_url' => trailingslashit(get_bloginfo('wpurl')) . '?wc-api=wc_gateway_crypay',
             'failUrl' => $this->get_fail_order_url($order),
             'successUrl' => add_query_arg('order-received', $order->get_id(), add_query_arg('key', $order->get_order_key(), $this->get_return_url($order))),
+ 	    'timestamp' => time(),
         ];
 
         $response = array('result' => 'fail');
