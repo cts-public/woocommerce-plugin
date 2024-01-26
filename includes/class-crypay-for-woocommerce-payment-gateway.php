@@ -190,6 +190,8 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
             'failUrl' => $this->get_fail_order_url($order),
             'successUrl' => add_query_arg('order-received', $order->get_id(), add_query_arg('key', $order->get_order_key(), $this->get_return_url($order))),
             'timestamp' => time(),
+            'email' => $order->get_billing_email(),
+            'name' => $order->get_billing_first_name() . ' ' . $order->get_billing_last_name(),
         ];
 
         $response = array('result' => 'fail');
