@@ -80,13 +80,21 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
             );
             ?>
             <br>
-            <a href="https://dev.crypay.com/docs/issues" target="_blank">
-                <?php
-                esc_html_e('Not working? Common issues');
-                ?>
-            </a> &middot;
             <a href="mailto:support@crypay.com">support@crypay.com</a>
         </p>
+
+        <p>
+        <p>1) Account Creation: To get started, visit <a href='https://crypay.com/signup' target='_blank'>https://crypay.com/signup</a> and complete the registration process.</p>
+        <p>2) Configuration: Enter your <b>API KEY</b> and <b>API SECRET</b> from your Crypay account into the appropriate fields. Adjust any additional settings as needed.</p>
+        <p>3) Adding Callback URL: Specify your callback URL to ensure proper integration and transaction processing.<b>
+                <?php
+                echo trailingslashit(get_bloginfo('wpurl')) . '?wc-api=wc_gateway_crypay';
+                ?>
+            </b>
+        </p>
+
+
+
         <table class="form-table">
             <?php
             $this->generate_settings_html();
@@ -107,14 +115,6 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
                 'type' => 'checkbox',
                 'description' => '',
                 'default' => 'no',
-            ),
-            'callback' => array(
-                'title' => __('Callback url', 'crypay'),
-                'label' => __('Callback url', 'crypay'),
-                'type' => 'text',
-                'description' => '',
-                'disabled' => true,
-                'default' => trailingslashit(get_bloginfo('wpurl')) . '?wc-api=wc_gateway_crypay',
             ),
             'description' => array(
                 'title' => __('Description', 'crypay'),
@@ -146,12 +146,10 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
             'test' => array(
                 'title' => __('Test', 'crypay'),
                 'type' => 'checkbox',
-                'label' => __('Enable Test Mode', 'crypay'),
+                'label' => __('Test Mode', 'crypay'),
                 'default' => 'no',
                 'description' => __(
-                    'To test on <a href="https://dev.crypay.com" target="_blank">CryPay Test</a>, turn Test Mode "On".
-					Please note, for Test Mode you must create a separate account on <a href="https://dev.crypay.com" target="_blank">dev.crypay.com</a> and generate API credentials there.
-					API credentials generated on <a href="https://crypay.com" target="_blank">crypay.com</a> are "Live" credentials and will not work for "Test" mode.',
+                    "To test on CryPay Test, turn Test Mode 'On'. Please note, for Test Mode you must create a separate account on dev.crypay.com and generate API credentials there. API credentials generated on crypay.com are 'Live' credentials and will not work for 'Test' mode",
                     'crypay'
                 ),
             ),
@@ -191,7 +189,7 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
             'currency' => $order->get_currency(),
             'failUrl' => $this->get_fail_order_url($order),
             'successUrl' => add_query_arg('order-received', $order->get_id(), add_query_arg('key', $order->get_order_key(), $this->get_return_url($order))),
- 	    'timestamp' => time(),
+            'timestamp' => time(),
         ];
 
         $response = array('result' => 'fail');
@@ -199,7 +197,6 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
         try {
             $gateway_order = $client->payment->create($params);
             if ($gateway_order) {
-                // update_post_meta($order->get_id(), static::ORDER_TOKEN_META_KEY, $gateway_order->token);
                 $response['result'] = 'success';
                 $response['redirect'] = $gateway_order->shortLink;
             }
