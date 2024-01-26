@@ -27,4 +27,4 @@ For testing purposes, it is important to generate separate API credentials on ht
 
 8. Finally, click on "Save changes", and you're ready to go!
 
-Now you can accept cryptocurrency payments on your WooCommerce store using crypay as the payment gateway. If you have any further questions or need assistance, feel free to contact our support teamc
+Now you can accept cryptocurrency payments on your WooCommerce store using crypay as the payment gateway. If you have any further questions or need assistance, feel free to contact our support team
