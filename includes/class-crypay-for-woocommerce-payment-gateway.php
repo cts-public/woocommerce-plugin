@@ -17,6 +17,7 @@ if (!class_exists('WC_Payment_Gateway')) {
     return;
 }
 
+use Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry;
 use CryPay\Exception\ApiErrorException;
 use CryPay\Client;
 
@@ -41,9 +42,11 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
     public function __construct()
     {
         $this->id = 'crypay';
-        $this->has_fields = false;
+        $this->has_fields = true;
         $this->method_title = 'CryPay';
+        $this->new_method_label = __('Pay with Cryptocurrency', 'crypay');
         $this->icon = apply_filters('woocommerce_crypay_icon', CRYPAY_FOR_WOOCOMMERCE_PLUGIN_URL . 'assets/bitcoin.png');
+        $this->method_description = __('Accept Bitcoin and Altcoins via CryPay in your WooCommerce store.', 'crypay');
 
         $this->init_form_fields();
         $this->init_settings();
@@ -87,9 +90,9 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
         <p>1) Account Creation: To get started, visit <a href='https://crypay.com/signup' target='_blank'>https://crypay.com/signup</a> and complete the registration process.</p>
         <p>2) Configuration: Enter your <b>API KEY</b> and <b>API SECRET</b> from your Crypay account into the appropriate fields. Adjust any additional settings as needed.</p>
         <p>3) Adding Callback URL: Specify your callback URL to ensure proper integration and transaction processing.<b>
-                <?php
-                echo trailingslashit(get_bloginfo('wpurl')) . '?wc-api=wc_gateway_crypay';
-                ?>
+        <?php
+            echo trailingslashit(get_bloginfo('wpurl')) . '?wc-api=wc_gateway_crypay';
+            ?>
             </b>
         </p>
 
@@ -149,7 +152,7 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
                 'label' => __('Test Mode', 'crypay'),
                 'default' => 'no',
                 'description' => __(
-                    "To test on CryPay Test, turn Test Mode 'On'. Please note, for Test Mode you must create a separate account on dev.crypay.com and generate API credentials there. API credentials generated on crypay.com are 'Live' credentials and will not work for 'Test' mode",
+                        "To test on CryPay Test, turn Test Mode 'On'. Please note, for Test Mode you must create a separate account on dev.crypay.com and generate API credentials there. API credentials generated on crypay.com are 'Live' credentials and will not work for 'Test' mode",
                     'crypay'
                 ),
             ),

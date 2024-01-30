@@ -86,3 +86,28 @@ function run_crypay_for_woocommerce() {
 
 }
 run_crypay_for_woocommerce();
+
+add_action( 'woocommerce_blocks_loaded', 'crypay_woocommerce_blocks_support' );
+
+function crypay_woocommerce_blocks_support() {
+    if ( class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
+        require_once dirname( __FILE__ ) . '/includes/class-crypay-for-woocommerce-blocks.php';
+        add_action(
+            'woocommerce_blocks_payment_method_type_registration',
+            function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
+                $container = Automattic\WooCommerce\Blocks\Package::container();
+                // registers as shared instance.
+                $container->register(
+                    WC_Crypay_Blocks_Support::class,
+                    function() {
+                        return new WC_Crypay_Blocks_Support();
+                    }
+                );
+                $payment_method_registry->register(
+                    $container->get( WC_Crypay_Blocks_Support::class )
+                );
+            },
+            5
+        );
+    }
+}
