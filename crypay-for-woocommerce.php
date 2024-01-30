@@ -35,7 +35,7 @@ require_once 'vendor/autoload.php';
 /**
  * Currently plugin version.
  */
-define( 'CRYPAY_FOR_WOOCOMMERCE_VERSION', '1.0.0' );
+define( 'CRYPAY_FOR_WOOCOMMERCE_VERSION', '1.0.1' );
 
 /**
  * Currently plugin URL.
