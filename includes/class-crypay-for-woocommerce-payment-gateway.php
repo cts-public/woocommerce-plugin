@@ -45,7 +45,7 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
         $this->has_fields = true;
         $this->method_title = 'CryPay';
         $this->new_method_label = __('Pay with Cryptocurrency', 'crypay');
-        $this->icon = apply_filters('woocommerce_crypay_icon', CRYPAY_FOR_WOOCOMMERCE_PLUGIN_URL . 'assets/bitcoin.png');
+        $this->icon = apply_filters('woocommerce_crypay_icon', CRYPAY_FOR_WOOCOMMERCE_PLUGIN_URL . 'assets/crypay.png');
         $this->method_description = __('Accept Bitcoin and Altcoins via CryPay in your WooCommerce store.', 'crypay');
 
         $this->init_form_fields();

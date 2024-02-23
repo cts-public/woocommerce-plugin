@@ -15,7 +15,7 @@
  * Plugin Name:       WooCommerce Payment Gateway - Crypay
  * Plugin URI:        https://crypay.com
  * Description:       Accept Bitcoin and Altcoins via CryPay in your WooCommerce store.
- * Version:           1.0.0
+ * Version:           1.0.2
  * Author:            CryPay
  * Author URI:        https://crypay.com
  * License:           MIT License
