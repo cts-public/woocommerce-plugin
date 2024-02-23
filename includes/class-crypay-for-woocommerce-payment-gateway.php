@@ -183,10 +183,16 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
         global $woocommerce, $page, $paged;
         $order = wc_get_order($order_id);
 
+        $order->update_status('pending');
+
+        wc_reduce_stock_levels($order_id);
+        WC()->cart->empty_cart();
+
         $client = $this->init_crypay();
 
+
         $params = [
-            'variableSymbol' => (string)$order->get_id(),
+            'variableSymbol' => (string)$order_id,
             'amount' => (float)$order->get_total(),
             'symbol' => $order->get_currency(),
             'currency' => $order->get_currency(),
