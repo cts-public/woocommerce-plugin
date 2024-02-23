@@ -66,7 +66,7 @@ class Crypay_For_Woocommerce {
 		if ( defined( 'CRYPAY_FOR_WOOCOMMERCE_VERSION' ) ) {
 			$this->version = CRYPAY_FOR_WOOCOMMERCE_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.0.2';
 		}
 		$this->plugin_name = 'crypay-for-woocommerce';
 
