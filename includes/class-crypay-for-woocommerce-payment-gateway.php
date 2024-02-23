@@ -123,7 +123,7 @@ class Crypay_For_Woocommerce_Payment_Gateway extends WC_Payment_Gateway
                 'title' => __('Description', 'crypay'),
                 'type' => 'textarea',
                 'description' => __('The payment method description which a user sees at the checkout of your store.', 'crypay'),
-                'default' => __('Pay with BTC, LTC, ETH, XMR, XRP, BCH and other cryptocurrencies. Powered by CryPay.', 'crypay'),
+                'default' => __('Pay with BTC, LTC, ETH, USDT and other cryptocurrencies. Powered by CryPay.', 'crypay'),
             ),
             'title' => array(
                 'title' => __('Title', 'crypay'),
